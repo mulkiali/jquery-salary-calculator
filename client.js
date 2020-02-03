@@ -32,7 +32,7 @@ let employees = [];
 function onReady(){
   console.log('in onReady');
   $('#submitButton').on('click', addEmployee);
-  $('#employeesOut').on('click', '.item', deleteEmployee);
+  $('#employeesOut').on('click', '.button', deleteEmployee);
 };
 
 function addEmployee(){
@@ -45,6 +45,16 @@ function addEmployee(){
     annualSalary: $( '#inSalary' ).val()
   }
   console.log('adding:', newEmployee);
+
+$( '#inFirstName' ).val(''),
+$( '#inLastName' ).val(''),
+$( '#inID' ).val(''),
+$( '#inJobTitle' ).val(''),
+$( '#inSalary' ).val('')
+
+calculateMonthlyTotal();
+let el= $('#monthlyTotal');
+el.empty();el.append(`${'#monthlyTotal'}`)
   
   employees.push(newEmployee);
 
@@ -61,16 +71,34 @@ function displayEmployee(){
     <td>${employees[i].id}</td>
     <td>${employees[i].jobTitle}</td>
     <td>${employees[i].annualSalary}</td>
-    <td class="item"><button class="deleteButton">Delete</button></td>
+    <td class="button"><button class="deleteButton">Delete</button></td>
     </tr>`);
   };
 };
+function calculateMonthlyTotal(){
+let calc = 0;
+for(let i=0; i<employees.length; i++){
+  calc+=(employees[i].annualSalary / 12)
+}
+monthlyTotal = calc;
+if(monthlyTotal > 20000){
+  document.getElementById("monthlyTotal").style.backgroundColor = "red";
+}
+}
 
 function deleteEmployee(){
   console.log('in deleteEmployee');
-  // let el = $(this);
-  // console.log('clicked on:', el);
-  // console.log('my parent:' ,el.parent());
+  let el = $(this);
+ 
+  let string = el.parent()[0].innerText;
+  let index = string.lastIndexOf('');
+  string = string.substring(0, index);
+  console.log(string);
+  
+  
+ 
+  
+  
   
  
   
