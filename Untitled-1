@@ -1,0 +1,46 @@
+let employees = [];
+
+function onReady(){
+$('#submitButton').on('click', addEmployee);
+};
+
+
+function addEmployee(){
+  
+  
+
+    let newEmployee = {
+        firstName: $( '#inFirstName' ).val(),
+        lastName: $( '#inLastName' ).val(),
+        id: $( '#inID' ).val(),
+        jobTitle: $( '#inJobTitle' ).val(),
+        annualSalary: $( '#inSalary' ).val()
+
+      }
+}
+$( '#inFirstName' ).val(''),
+$( '#inLastName' ).val(''),
+$( '#inID' ).val(''),
+$( '#inJobTitle' ).val(''),
+$( '#inSalary' ).val('')
+
+employees.push(addEmployee);
+
+function displayEmployee(){
+  let el = $('#employeeTable')
+  for(let i=0; i<employees.length; i++){
+
+el.append(`<tr>
+<td>${employees[i].firstName}</td>
+<td>${employees[i].lastName}</td>
+<td>${employees[i].id}</td>
+<td>${employees[i].jobTitle}</td>
+<td>${employees[i].annualSalary}</td>
+<td class="buttonItem"><button class="deleteButton"–>Delete</button></td>
+</tr>`);
+  }
+};
+
+function deleteEmployee(){
+console.log(deleteEmployee); 
+}
