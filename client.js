@@ -32,6 +32,7 @@ let employees = [];
 function onReady(){
   console.log('in onReady');
   $('#submitButton').on('click', addEmployee);
+  $('#employeesOut').on('click', '.item', deleteEmployee);
 };
 
 function addEmployee(){
@@ -44,5 +45,33 @@ function addEmployee(){
     annualSalary: $( '#inSalary' ).val()
   }
   console.log('adding:', newEmployee);
+  
+  employees.push(newEmployee);
+
+  displayEmployee();
+}
+function displayEmployee(){
+  console.log('in displayEmployee');
+  let el = $('#employeesOut');
+  el.empty();
+  for(let i=0; i<employees.length; i++){
+    el.append(`<tr>
+    <td>${employees[i].firstName}</td>
+    <td>${employees[i].lastName}</td>
+    <td>${employees[i].id}</td>
+    <td>${employees[i].jobTitle}</td>
+    <td>${employees[i].annualSalary}</td>
+    <td class="item"><button class="deleteButton">Delete</button></td>
+    </tr>`);
+  };
+};
+
+function deleteEmployee(){
+  console.log('in deleteEmployee');
+  // let el = $(this);
+  // console.log('clicked on:', el);
+  // console.log('my parent:' ,el.parent());
+  
+ 
   
 }
